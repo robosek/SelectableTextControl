@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SelectableTextControl.View.WelcomePage"
+             xmlns:local="clr-namespace:SelectableTextControl.CustomControls;assembly=SelectableTextControl">
+  <ScrollView>
+    <StackLayout Padding="10">
+      <Label  Text="Selectable text" VerticalOptions="Center" HorizontalOptions="Center" FontSize="28"  />
+      <local:SelectableEntry x:Name="selectableEntry" Text="In Shared Code"  HeightRequest="400" />
+      <Button Text="Show last selected text" HorizontalOptions="Center" Clicked="SelectedText_OnClicked" />
+    </StackLayout>
+  </ScrollView>
+</ContentPage>
