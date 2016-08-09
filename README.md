@@ -19,5 +19,6 @@
 </ol>
 <h3>Troubleshooting</h3>
 <p>W przypadku błędu z przywróceniem bibliotek usunąć cały element</p> 
-<p><b><xmp><Target Name="BeforeBuild"></xmp></b> z plików *.cproj dla każdego z projektów.</p>
+<p><b><xmp><Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+</xmp></b> z plików *.cproj dla każdego z projektów.</p>
   
