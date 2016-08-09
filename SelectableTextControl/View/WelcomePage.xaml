@@ -6,7 +6,7 @@
   <ScrollView>
     <StackLayout Padding="10">
       <Label  Text="Selectable text" VerticalOptions="Center" HorizontalOptions="Center" FontSize="28"  />
-      <local:SelectableEntry x:Name="selectableEntry" Text="In Shared Code"  HeightRequest="400" />
+      <local:SelectableEntry x:Name="selectableEntry" Text="In Shared Code"  HeightRequest="340" />
       <Button Text="Show last selected text" HorizontalOptions="Center" Clicked="SelectedText_OnClicked" />
     </StackLayout>
   </ScrollView>

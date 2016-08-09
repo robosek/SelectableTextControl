@@ -16,6 +16,8 @@ using SelectableTextControl.CustomControls;
 using SelectableTextControl.Droid.CustomRenderes;
 using Android.Graphics.Drawables;
 using System.Threading.Tasks;
+using System.ComponentModel;
+using static Android.Views.View;
 
 [assembly: ExportRenderer(typeof(SelectableEntry), typeof(SelectableTextRenderer))]
 namespace SelectableTextControl.Droid.CustomRenderes
@@ -32,23 +34,29 @@ namespace SelectableTextControl.Droid.CustomRenderes
                 Control.SetTextSize(Android.Util.ComplexUnitType.Px, 40);
                 Control.SetRawInputType(Android.Text.InputTypes.Null);
                 Control.SetTextIsSelectable(true);
-                Control.FocusChange += (sender, ev) =>
-                {
-                    int start = Control.SelectionStart;
-                    int end = Control.SelectionEnd;
-                    SetSelectedTextToGlobal(start, end);
-                };
-                
+                Control.SetScrollContainer(true);
 
+                Control.LayoutChange += (sender, ev) =>
+                 {
+                     int start = Control.SelectionStart;
+                     int end = Control.SelectionEnd;
+                     if (end > 0 && end > start)
+                         SetSelectedTextToGlobal(start, end);
+                 };
             }
         }
 
+
+
+
         private void SetSelectedTextToGlobal(int start, int end)
         {
-            if(ControlIsNotNullAndEmpty())
+           
+
+            if (ControlIsNotNullAndEmpty())
             {
                 string text = Control.Text;
-                text = text.Substring(start, end-start);
+                text = text.Substring(start, end - start);
                 App.SelectedText = text;
             }
         }
@@ -57,9 +65,6 @@ namespace SelectableTextControl.Droid.CustomRenderes
         {
             return Control?.Text?.Length > 0;
         }
-
-     
-
 
     }
 }
